@@ -31,36 +31,36 @@ Personality is engineered, not just prompted: a long-running system prompt plus 
 
 ## 3. Hardware
 
-| Machine | Spec | Role |
-|---------|------|------|
-| M4 Max | 16", 48 GB, 1 TB | Dedicated Marvin brain. Freshly formatted, separate macOS account. Runs 24/7. |
-| M5 Max | 64 GB | Cris's personal/dev machine. Marvin work happens here, deploys to M4. |
+| Machine | Spec             | Role                                                                          |
+| ------- | ---------------- | ----------------------------------------------------------------------------- |
+| M4 Max  | 16", 48 GB, 1 TB | Dedicated Marvin brain. Freshly formatted, separate macOS account. Runs 24/7. |
+| M5 Max  | 64 GB            | Cris's personal/dev machine. Marvin work happens here, deploys to M4.         |
 
 ---
 
 ## 4. Tech Stack
 
-| Layer | Tool | Status | Phase |
-|-------|------|--------|-------|
-| Language | Python 3.12 via `uv` | locked | All |
-| LLM serving | Ollama | locked | 1 |
-| Starter model | LLaMA 3.1 8B | locked | 1 |
-| Target model | Qwen 3 32B | target | 1+ |
-| Agent reasoning | LangGraph | locked | 2+ |
-| Persistent memory (relational) | PostgreSQL 16+ | locked | 2 |
-| Persistent memory (vectors) | pgvector | locked | 2 |
-| Cache and task queue | Redis | deferred | 4+ |
-| Internet search | Tavily API | locked | 3 |
-| Scheduling | APScheduler | locked | 4 |
-| HTTP and WebSocket server | FastAPI | locked | 5 |
-| Future memory framework | Letta (formerly MemGPT) | bookmark | 6+ |
-| IDE | Cursor Pro | locked | All |
-| Deep-work AI assistant | Claude Code | locked | All |
-| Terminal | iTerm2 + Oh My Zsh + Powerlevel10k | locked | All |
-| Version control | Git + GitHub | locked | All |
-| CI/CD | GitHub Actions | locked | All |
-| Lint and format | ruff, yamllint, markdownlint, actionlint | locked | All |
-| Secret scanning | gitleaks (CI plus pre-commit) | locked | All |
+| Layer                          | Tool                                     | Status   | Phase |
+| ------------------------------ | ---------------------------------------- | -------- | ----- |
+| Language                       | Python 3.12 via `uv`                     | locked   | All   |
+| LLM serving                    | Ollama                                   | locked   | 1     |
+| Starter model                  | LLaMA 3.1 8B                             | locked   | 1     |
+| Target model                   | Qwen 3 32B                               | target   | 1+    |
+| Agent reasoning                | LangGraph                                | locked   | 2+    |
+| Persistent memory (relational) | PostgreSQL 16+                           | locked   | 2     |
+| Persistent memory (vectors)    | pgvector                                 | locked   | 2     |
+| Cache and task queue           | Redis                                    | deferred | 4+    |
+| Internet search                | Tavily API                               | locked   | 3     |
+| Scheduling                     | APScheduler                              | locked   | 4     |
+| HTTP and WebSocket server      | FastAPI                                  | locked   | 5     |
+| Future memory framework        | Letta (formerly MemGPT)                  | bookmark | 6+    |
+| IDE                            | Cursor Pro                               | locked   | All   |
+| Deep-work AI assistant         | Claude Code                              | locked   | All   |
+| Terminal                       | iTerm2 + Oh My Zsh + Powerlevel10k       | locked   | All   |
+| Version control                | Git + GitHub                             | locked   | All   |
+| CI/CD                          | GitHub Actions                           | locked   | All   |
+| Lint and format                | ruff, yamllint, markdownlint, actionlint | locked   | All   |
+| Secret scanning                | gitleaks (CI plus pre-commit)            | locked   | All   |
 
 ---
 
@@ -277,23 +277,23 @@ Marvin will eventually hold conversation history, learned preferences, and API t
 
 ### Controls
 
-| Layer | Control | Status |
-|-------|---------|--------|
-| Repo | `.gitignore` covering `.env`, secrets, model files | done |
-| Repo | gitleaks scanning in CI | done |
-| Repo | Pre-commit gitleaks (local) | pending (Layer 3) |
-| Branch | Ruleset on `main`: PR required, no admin bypass | done |
-| Branch | Required signed commits on `main` | in progress |
-| Code | ruff, actionlint, yamllint, markdownlint in CI | done |
-| Code | Dependabot for dependency CVEs | backlog |
-| Code | CodeQL static analysis | backlog |
-| Runtime | `.env` and `python-dotenv` for secrets | pending (Layer 2) |
-| Runtime | All API keys rotated periodically | ongoing |
-| DB (Phase 2) | Postgres SSL-only connections | planned |
-| DB (Phase 2) | Row-Level Security on multi-user tables | planned |
-| DB (Phase 2) | Encrypted columns for sensitive fields | planned |
-| Network (Phase 5) | FastAPI bound to localhost by default | planned |
-| Network (Phase 7) | Mutual TLS between robot body and brain | planned |
+| Layer             | Control                                            | Status            |
+| ----------------- | -------------------------------------------------- | ----------------- |
+| Repo              | `.gitignore` covering `.env`, secrets, model files | done              |
+| Repo              | gitleaks scanning in CI                            | done              |
+| Repo              | Pre-commit gitleaks (local)                        | pending (Layer 3) |
+| Branch            | Ruleset on `main`: PR required, no admin bypass    | done              |
+| Branch            | Required signed commits on `main`                  | in progress       |
+| Code              | ruff, actionlint, yamllint, markdownlint in CI     | done              |
+| Code              | Dependabot for dependency CVEs                     | backlog           |
+| Code              | CodeQL static analysis                             | backlog           |
+| Runtime           | `.env` and `python-dotenv` for secrets             | pending (Layer 2) |
+| Runtime           | All API keys rotated periodically                  | ongoing           |
+| DB (Phase 2)      | Postgres SSL-only connections                      | planned           |
+| DB (Phase 2)      | Row-Level Security on multi-user tables            | planned           |
+| DB (Phase 2)      | Encrypted columns for sensitive fields             | planned           |
+| Network (Phase 5) | FastAPI bound to localhost by default              | planned           |
+| Network (Phase 7) | Mutual TLS between robot body and brain            | planned           |
 
 ### Threat model — running list
 
@@ -319,19 +319,19 @@ Marvin will eventually hold conversation history, learned preferences, and API t
 
 ## 12. Glossary
 
-| Term | Definition |
-|------|------------|
-| ADR | Architectural Decision Record. A short doc explaining *why* a design choice was made, including alternatives considered. |
-| Agent | A program that wraps an LLM with tools and a reasoning loop, enabling autonomous decision-making. |
-| Embedding | A vector representation of text used for semantic search. |
-| HNSW | Hierarchical Navigable Small World. Graph-based index for fast nearest-neighbour search over vectors. |
-| LLM | Large Language Model. Marvin's reasoning brain. |
-| Local-first | Marvin runs on Cris's hardware, not in the cloud. Privacy, control, no ongoing cost. |
-| pgvector | PostgreSQL extension adding a `vector` data type and nearest-neighbour search. |
-| RAG | Retrieval-Augmented Generation. Pattern: embed, store, retrieve, inject into prompt, LLM answers. |
-| Ruleset | GitHub's modern branch governance mechanism (successor to classic branch protection). |
-| Signed commit | A commit cryptographically proven to come from a specific key holder. |
-| Vector DB | Database optimised for nearest-neighbour search over high-dimensional vectors. |
+| Term          | Definition                                                                                                               |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| ADR           | Architectural Decision Record. A short doc explaining *why* a design choice was made, including alternatives considered. |
+| Agent         | A program that wraps an LLM with tools and a reasoning loop, enabling autonomous decision-making.                        |
+| Embedding     | A vector representation of text used for semantic search.                                                                |
+| HNSW          | Hierarchical Navigable Small World. Graph-based index for fast nearest-neighbour search over vectors.                    |
+| LLM           | Large Language Model. Marvin's reasoning brain.                                                                          |
+| Local-first   | Marvin runs on Cris's hardware, not in the cloud. Privacy, control, no ongoing cost.                                     |
+| pgvector      | PostgreSQL extension adding a `vector` data type and nearest-neighbour search.                                           |
+| RAG           | Retrieval-Augmented Generation. Pattern: embed, store, retrieve, inject into prompt, LLM answers.                        |
+| Ruleset       | GitHub's modern branch governance mechanism (successor to classic branch protection).                                    |
+| Signed commit | A commit cryptographically proven to come from a specific key holder.                                                    |
+| Vector DB     | Database optimised for nearest-neighbour search over high-dimensional vectors.                                           |
 
 ---
 
