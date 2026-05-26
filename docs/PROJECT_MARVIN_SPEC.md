@@ -143,6 +143,6 @@ Marvin sends HTTP requests to Ollama's local API in Phase 1, to Tavily in Phase 
 
 ---
 
-## 6. Architecture
+## 6.. Architecture
 
 ```text
