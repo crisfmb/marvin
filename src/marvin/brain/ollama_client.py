@@ -5,8 +5,6 @@ DEFAULT_URL = "http://localhost:11434/api/generate"
 
 
 class OllamaClient:
-    """A client for talking to a local Ollama server."""
-
     def __init__(self, model: str = DEFAULT_MODEL, url: str = DEFAULT_URL) -> None:
         self.model = model
         self.url = url
